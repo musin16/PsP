@@ -47,4 +47,4 @@ public class Ejercicio1 {
 			System.exit(0);
 		}
 	}
-}
+} 
