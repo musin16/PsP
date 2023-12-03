@@ -1,6 +1,4 @@
-package Ejercicio3;
-
-import java.util.concurrent.Semaphore;
+package Ejercicio3Sem;
 
 public class Main {
 	/*
@@ -15,11 +13,17 @@ public class Main {
 	 * que utilice semáforos y otra que use otro mecanismo.
 	 */
 	public static void main(String[] args) {
-		Semaphore sConsumo = new Semaphore(0);
-		Cinta c = new Cinta(sConsumo);
+		Cinta c = new Cinta();
 		Thread prodc = new Thread(new Productor(c));
 		prodc.start();
-		Thread th = new Thread(new Consumidor(c, "Consumidor 1"));
+		try {
+			prodc.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		prodc = new Thread(new Productor(c));
+		prodc.start();
+		Thread th = new Thread(new Consumidor(c, "Consumidor"));
 		th.start();
 	}
 }
