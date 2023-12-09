@@ -16,7 +16,8 @@ public class Main {
 			pb.redirectOutput(Redirect.INHERIT);
 			pb.redirectInput(Redirect.INHERIT);
 			Process pr = pb.start();
-		} catch (IOException e) {
+			pr.waitFor();
+		} catch (IOException | InterruptedException e) {
 			e.printStackTrace();
 		}
 	}

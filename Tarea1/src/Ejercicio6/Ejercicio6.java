@@ -21,24 +21,6 @@ public class Ejercicio6 {
 		}
 	}
 
-	/*
-	 * Esta aplicacion lo que hace es que pasandole dos argumentos ,comprueba si el
-	 * primer argumento que le han pasado si es el nombre del proceso y
-	 * posteriormente comprueba si el segundo parametro que se le ha pasado es el
-	 * numero de iteraciones ,si no se le ha pasado ninguna iteracion se le asigna
-	 * por defecto 100 iteraciones si el valor no es numerico se captura la
-	 * excepcion NumberFormatException. y se asigna el numero de iteraciones a 100.
-	 * A continuacion compone la ruta del archivo
-	 * que la crea en la ruta del usuario que tiene la sesion iniciada. Despues se
-	 * obtiene el tiempo de milisegundos al inicio de la iteración y pasamos al
-	 * metodo EscribirArchivoMensaje el primer parametro del main junto con un con
-	 * la variable que contiene los milisegundos iniciales. Seguidamente ,muestra
-	 * por consola un mensaje con las misma veces que el numero te iteraciones que
-	 * tiene asignado.Por ultimo,obtenemos eltiempo en milisegundos al final de la
-	 * iteracion y pasamos la metodo EscribirArchivoMensaje el primer parametro del
-	 * main junto con una frase con la variable que contiene los milisegundos
-	 * finales.
-	 */
 	public static void main(String[] args) {
 // Chequeo si el usuario me ha pasado en el primer parámetro el nombre asignado al proceso
 		if (args.length > 0) {
