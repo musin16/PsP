@@ -1,27 +1,34 @@
 package Ejercicio3Monitores;
 
 public class Productor implements Runnable {
-    Cinta c;
 
-    public Productor(Cinta c) {
-        this.c = c;
-    }
+	public Productor() {
 
-    @Override
-    public void run() {
-        while (true) {
-            synchronized(c) {
-                while (Cinta.cont == 10) {
-                    try {
-                        c.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                Cinta.cont++;
-                System.out.println("Se ha producido correctamente: " + Cinta.cont);
-                c.notifyAll();
-            }
-        }
-    }
+	}
+
+	@Override
+	public void run() {
+
+		while (true) {
+			synchronized (Cinta.obj) {
+				while (Cinta.cont == 10) {
+					try {
+						Cinta.obj.wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				int valor = (Cinta.producto[Cinta.cont] = (int) (Math.random() * 200));
+				System.out.println("Se ha producido correctamente: " + valor);
+				Cinta.cont++;
+				Cinta.obj.notifyAll();
+				try {
+					Thread.sleep((long) (Math.random() * 2000));
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+	}
 }

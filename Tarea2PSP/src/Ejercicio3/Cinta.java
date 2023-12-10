@@ -5,9 +5,9 @@ import java.util.concurrent.Semaphore;
 public class Cinta {
 
 	private Semaphore sm;
-	public final int CONTADOR = 10;
-	public static int[] producto = new int[10];
-	public static int[] productoMostrar = new int[10];
+	public static final int CONTADOR = 10;
+	public static int[] producto = new int[CONTADOR];
+	public static int[] productoMostrar = new int[CONTADOR];
 
 	public Cinta(Semaphore sm) {
 		this.sm = sm;

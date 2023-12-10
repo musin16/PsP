@@ -12,10 +12,10 @@ public class Main {
 	 * produzcan picos de trabajo ocasionalmente. Use mecanismo thread normal.
 	 */
 	public static void main(String[] args) {
-		Cinta c = new Cinta();
-		Thread prodc = new Thread(new Productor(c));
+		Productor p = new Productor();
+		Thread prodc = new Thread(p);
 		prodc.start();
-		Thread th = new Thread(new Consumidor(c, "Consumidor"));
+		Thread th = new Thread(new Consumidor("Consumidor"));
 		th.start();
 	}
 }

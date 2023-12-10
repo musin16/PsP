@@ -1,7 +1,5 @@
 package Ejercicio5;
 
-import java.util.concurrent.Semaphore;
-
 public class Main {
 //	Ejercicio 5: Implementa un programa que simule un sistema de 
 //	venta de entradas para un teatro. El teatro consta de
@@ -20,12 +18,10 @@ public class Main {
 //	entrada se mostrará un mensaje por consola del tipo:
 //	Reservada. Ventanilla X – Fila i, Butaca j
 	public static void main(String[] args) {
-		Semaphore sem = new Semaphore(25);
 		Thread ventanaX = new Thread(new Teatro("Ventana X"));
 		ventanaX.start();
 		Thread ventanaY = new Thread(new Teatro("Ventana Y"));
 		ventanaY.start();
-
 	}
 
 }

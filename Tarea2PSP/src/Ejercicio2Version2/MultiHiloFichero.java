@@ -49,7 +49,7 @@ public class MultiHiloFichero implements Runnable {
 
 	@Override
 	public void run() {
-		try (BufferedReader br = new BufferedReader(new FileReader(ficheros))){
+		try (BufferedReader br = new BufferedReader(new FileReader(ficheros))) {
 			MultiHiloFichero pL = new MultiHiloFichero();
 			String linea = "";
 			while ((linea = br.readLine()) != null) {
@@ -64,7 +64,6 @@ public class MultiHiloFichero implements Runnable {
 		} catch (FileNotFoundException e) {
 			System.out.println("Fichero no existe");
 		} catch (IOException e) {
-			// TODO: handle exception
 		}
 	}
 }

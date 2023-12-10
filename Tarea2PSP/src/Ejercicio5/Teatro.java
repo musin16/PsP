@@ -11,13 +11,20 @@ public class Teatro implements Runnable {
 
 	@Override
 	public void run() {
-		for (int i = 0; i < asiento.length; i++) {
-			for (int j = 0; j < asiento[0].length; j++) {
-				if (asiento[i][j] == 0) {
-					asiento[i][j] = 1;
-					System.out.println(nombreVentana + " Fila " + i + " Butaca " + j);
+		try {
+			for (int i = 0; i < asiento.length; i++) {
+				for (int j = 0; j < asiento[0].length; j++) {
+					if (asiento[i][j] == 0) {
+						asiento[i][j] = 1;
+						System.out.println(nombreVentana + " Fila " + i + " Butaca " + j);
+
+						Thread.sleep((long) (Math.random() * 2000));
+
+					}
 				}
 			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
