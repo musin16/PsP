@@ -19,6 +19,7 @@ public class Main {
 		System.out.println("Introduce la distancia: ");
 		int distancia = sc.nextInt();
 		sc.nextLine();
+		Caballos.contBool = numCab;
 		for (int i = 0; i < numCab; i++) {
 			Thread t = new Thread(new Caballos(distancia, 0, "Caballo " + (i + 1)));
 			t.start();

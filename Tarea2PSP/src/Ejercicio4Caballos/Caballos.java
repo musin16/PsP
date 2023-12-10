@@ -6,9 +6,9 @@ public class Caballos implements Runnable {
 	private static int cont = 0;
 	private static int contOpcion = 0;
 	private static int contEspera = 0;
-	public static boolean opcion[] = new boolean[4];
-	public static boolean ganador = false;
-	public static Object lock = new Object();
+	public static int contBool = 0;
+	public static boolean winner = false;
+	public static Object bloquearlock = new Object();
 	private String caballo;
 
 	public Caballos(int distancia, int cont, String caballo) {
@@ -21,26 +21,28 @@ public class Caballos implements Runnable {
 	public void run() {
 
 		try {
-			while (ganador == false) {
-				synchronized (lock) {
+			while (winner == false) {
+
+				synchronized (bloquearlock) {
 					if (contador == 1000 * (cont + 1)) {
 						contEspera = 1;
 					}
 					if (contEspera == 1) {
 						contOpcion++;
 						System.out.println(this.caballo + " lleva " + contador + "metros");
-						if (contOpcion == 4) {
+						if (contOpcion == contBool) {
 							System.out.println("");
 							contEspera = 0;
 							contOpcion = 0;
 							cont++;
-							lock.notifyAll();
+							Thread.sleep(2000);
+							bloquearlock.notifyAll();
 						} else {
-							lock.wait();
+							bloquearlock.wait();
 						}
 					}
 					if (contador == distancia) {
-						ganador = true;
+						winner = true;
 						System.out.println(this.caballo + " ganador ");
 						cont = 6;
 						contador++;
